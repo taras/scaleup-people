@@ -16,11 +16,21 @@ class ScaleUp_People_Plugin {
     self::$_this   = $this;
     self::$_people = new ScaleUp_People();
 
+    add_action( 'init', array( $this, 'admin_init' ) );
     add_action( 'admin_init', array( $this, 'admin_init' ) );
+    add_action( 'after_setup_theme', array( $this, 'after_setup_theme') );
   }
 
   function admin_init() {
     $this->register_field_group();
+  }
+
+  function after_setup_theme() {
+    if ( function_exists( 'register_scaleup_template' ) ) {
+      // you can register as many templates as you need. For example:
+      register_scaleup_template( SCALEUP_PEOPLE_DIR . '/templates', '/people.php' );
+      register_scaleup_template( SCALEUP_PEOPLE_DIR . '/templates', '/person.php' );
+    }
   }
 
   function register_field_group() {
