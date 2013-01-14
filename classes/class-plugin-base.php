@@ -1,11 +1,11 @@
 <?php
 class ScaleUp_People_Plugin {
 
-  private static $_args;
-
   private static $_this;
 
   private static $_people;
+
+  private static $_person_post_type;
 
   public static function this() {
     return self::$_this;
@@ -13,12 +13,14 @@ class ScaleUp_People_Plugin {
 
   function __construct() {
 
-    self::$_this   = $this;
-    self::$_people = new ScaleUp_People();
+    self::$_this              = $this;
+    self::$_person_post_type  = apply_filters( 'scaleup_people_plugin_peopl_post_type', 'person' );
+    self::$_people            = new ScaleUp_People( self::$_person_post_type );
 
     add_action( 'init', array( $this, 'admin_init' ) );
     add_action( 'admin_init', array( $this, 'admin_init' ) );
     add_action( 'after_setup_theme', array( $this, 'after_setup_theme') );
+    add_action( 'acf_save_post', array( $this, 'acf_save_post' ), 20 );
   }
 
   function admin_init() {
@@ -35,6 +37,7 @@ class ScaleUp_People_Plugin {
 
   function register_field_group() {
     if ( function_exists( "register_field_group" ) ) {
+      $post_type = self::$_person_post_type;
       register_field_group( array(
                                  'id' => 'scaleup_person_fields',
                                  'title' => 'Person Fields',
@@ -42,9 +45,9 @@ class ScaleUp_People_Plugin {
                                  array(
                                    0 =>
                                    array(
-                                     'key' => 'field_1',
+                                     'key' => "$post_type.additionalName",
                                      'label' => 'Middle Name',
-                                     'name' => 'additionalname',
+                                     'name' => 'additionalName',
                                      'type' => 'text',
                                      'order_no' => 0,
                                      'instructions' => 'An additional name for a Person, can be used for a middle name.
@@ -68,7 +71,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    1 =>
                                    array(
-                                     'key' => 'field_2',
+                                     'key' => "$post_type.address",
                                      'label' => 'Address',
                                      'name' => 'address',
                                      'type' => 'text',
@@ -94,7 +97,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    2 =>
                                    array(
-                                     'key' => 'field_3',
+                                     'key' => "$post_type.affiliation",
                                      'label' => 'Affiliation ',
                                      'name' => 'affiliation',
                                      'type' => 'text',
@@ -120,9 +123,9 @@ class ScaleUp_People_Plugin {
                                    ),
                                    3 =>
                                    array(
-                                     'key' => 'field_4',
+                                     'key' => "$post_type.alumniOf",
                                      'label' => 'Alma Mater',
-                                     'name' => 'alumniof',
+                                     'name' => 'alumniOf',
                                      'type' => 'text',
                                      'order_no' => 3,
                                      'instructions' => 'An educational organizations that the person is an alumni of.
@@ -146,7 +149,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    4 =>
                                    array(
-                                     'key' => 'field_5',
+                                     'key' => "$post_type.award",
                                      'label' => 'Award',
                                      'name' => 'award',
                                      'type' => 'text',
@@ -172,7 +175,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    5 =>
                                    array(
-                                     'key' => 'field_6',
+                                     'key' => "$post_type.awards",
                                      'label' => 'Awards',
                                      'name' => 'awards',
                                      'type' => 'text',
@@ -198,9 +201,9 @@ class ScaleUp_People_Plugin {
                                    ),
                                    6 =>
                                    array(
-                                     'key' => 'field_7',
+                                     'key' => "$post_type.birthDate",
                                      'label' => 'Birth Date ',
-                                     'name' => 'birthdate',
+                                     'name' => 'birthDate',
                                      'type' => 'number',
                                      'order_no' => 6,
                                      'instructions' => 'Date of birth.
@@ -329,7 +332,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_12',
                                      'label' => 'Contact Point ',
-                                     'name' => 'contactpoint',
+                                     'name' => 'contactPoint',
                                      'type' => 'text',
                                      'order_no' => 11,
                                      'instructions' => 'A contact point for a person or organization.
@@ -355,7 +358,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_13',
                                      'label' => 'Contact Points	',
-                                     'name' => 'contactpoints',
+                                     'name' => 'contactPoints',
                                      'type' => 'text',
                                      'order_no' => 12,
                                      'instructions' => 'A contact point for a person or organization (legacy spelling; see singular form, contactPoint).
@@ -458,7 +461,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_17',
                                      'label' => 'Last Name ',
-                                     'name' => 'familyname',
+                                     'name' => 'familyName',
                                      'type' => 'text',
                                      'order_no' => 16,
                                      'instructions' => 'Family name. In the U.S., the last name of an Person. This can be used along with givenName instead of the Name property.
@@ -484,7 +487,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_18',
                                      'label' => 'Fax Number',
-                                     'name' => 'faxnumber',
+                                     'name' => 'faxNumber',
                                      'type' => 'text',
                                      'order_no' => 17,
                                      'instructions' => 'The fax number.
@@ -562,7 +565,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_21',
                                      'label' => 'First Name ',
-                                     'name' => 'givenname',
+                                     'name' => 'givenName',
                                      'type' => 'text',
                                      'order_no' => 20,
                                      'instructions' => 'Given name. In the U.S., the first name of a Person. This can be used along with familyName instead of the Name property.
@@ -588,7 +591,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_22',
                                      'label' => ' Global Location Number',
-                                     'name' => 'globallocationnumber',
+                                     'name' => 'globalLocationNumber',
                                      'type' => 'text',
                                      'order_no' => 21,
                                      'instructions' => 'The Global Location Number (GLN, sometimes also referred to as International Location Number or ILN) of the respective organization, person, or place. The GLN is a 13-digit number used to identify parties and physical locations.
@@ -614,7 +617,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_23',
                                      'label' => 'Points-of-Sales',
-                                     'name' => 'haspos',
+                                     'name' => 'hasPos',
                                      'type' => 'text',
                                      'order_no' => 22,
                                      'instructions' => 'Points-of-Sales operated by the organization or person.
@@ -640,7 +643,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_24',
                                      'label' => 'Residence Location 	',
-                                     'name' => 'homelocation',
+                                     'name' => 'homeLocation',
                                      'type' => 'text',
                                      'order_no' => 23,
                                      'instructions' => 'A contact location for a person\'s residence.
@@ -666,7 +669,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_25',
                                      'label' => 'Name Prefix ',
-                                     'name' => 'honorificprefix',
+                                     'name' => 'honorificPrefix',
                                      'type' => 'text',
                                      'order_no' => 24,
                                      'instructions' => 'An honorific prefix preceding a Person\'s name such as Dr/Mrs/Mr.
@@ -692,7 +695,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_26',
                                      'label' => 'Name Suffix ',
-                                     'name' => 'honorificsuffix',
+                                     'name' => 'honorificSuffix',
                                      'type' => 'text',
                                      'order_no' => 25,
                                      'instructions' => 'An honorific suffix preceding a Person\'s name such as M.D. /PhD/MSCSW.
@@ -718,7 +721,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_27',
                                      'label' => 'Interaction Count ',
-                                     'name' => 'interactioncount',
+                                     'name' => 'interactionCount',
                                      'type' => 'text',
                                      'order_no' => 26,
                                      'instructions' => 'A count of a specific user interactions with this item—for example, 20 UserLikes, 5 UserComments, or 300 UserDownloads. The user interaction type should be one of the sub types of UserInteraction.
@@ -770,7 +773,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_29',
                                      'label' => 'Job Title ',
-                                     'name' => 'jobtitle',
+                                     'name' => 'jobTitle',
                                      'type' => 'text',
                                      'order_no' => 28,
                                      'instructions' => 'The job title of the person (for example, Financial Manager).
@@ -822,7 +825,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_31',
                                      'label' => 'Offering',
-                                     'name' => 'makesoffer',
+                                     'name' => 'makesOffer',
                                      'type' => 'text',
                                      'order_no' => 30,
                                      'instructions' => 'A pointer to products or services offered by the organization or person.
@@ -848,7 +851,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_32',
                                      'label' => 'Member Of ',
-                                     'name' => 'memberof',
+                                     'name' => 'memberOf',
                                      'type' => 'text',
                                      'order_no' => 31,
                                      'instructions' => 'An organization to which the person belongs.
@@ -1004,7 +1007,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_38',
                                      'label' => 'Performing In ',
-                                     'name' => 'performerin',
+                                     'name' => 'performerIn',
                                      'type' => 'text',
                                      'order_no' => 37,
                                      'instructions' => 'Event that this person is a performer or participant in.
@@ -1030,7 +1033,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_39',
                                      'label' => 'Relatives ',
-                                     'name' => 'relatedto',
+                                     'name' => 'relatedTo',
                                      'type' => 'text',
                                      'order_no' => 38,
                                      'instructions' => 'The most generic familial relation.
@@ -1160,7 +1163,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_44',
                                      'label' => 'Tax ID',
-                                     'name' => 'taxid',
+                                     'name' => 'taxId',
                                      'type' => 'text',
                                      'order_no' => 43,
                                      'instructions' => 'The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain.
@@ -1212,7 +1215,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_46',
                                      'label' => 'Vat ID',
-                                     'name' => 'vatid',
+                                     'name' => 'vatId',
                                      'type' => 'text',
                                      'order_no' => 45,
                                      'instructions' => 'The Value-added Tax ID of the organisation or person.
@@ -1238,7 +1241,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_47',
                                      'label' => 'Work Location ',
-                                     'name' => 'worklocation',
+                                     'name' => 'workLocation',
                                      'type' => 'text',
                                      'order_no' => 46,
                                      'instructions' => 'A contact location for a person\'s place of work.
@@ -1264,7 +1267,7 @@ class ScaleUp_People_Plugin {
                                    array(
                                      'key' => 'field_48',
                                      'label' => 'Employment ',
-                                     'name' => 'worksfor',
+                                     'name' => 'worksFor',
                                      'type' => 'text',
                                      'order_no' => 47,
                                      'instructions' => 'Organizations that the person works for.
@@ -1313,5 +1316,33 @@ class ScaleUp_People_Plugin {
     }
 
   }
+
+  /**
+   * Callback for acf_save_post hook. Adds title and slug to people.
+   *
+   * @param bool $post_id
+   */
+  static function acf_save_post( $post_id = false ) {
+
+    // sanity check to make sure that we're only doing work for comedians
+    if ( get_post_type( $post_id ) != self::$_person_post_type ) return;
+
+    $given_name   = get_field( 'givenName', $post_id );
+    $middle_name  = get_field( 'additionalName', $post_id );
+    $family_name  = get_field( 'familyName', $post_id );
+
+    $name = $given_name;
+    if ( $middle_name )
+      $name .= " $middle_name";
+    $name .= " $family_name";
+
+    $where = array( 'ID' => $post_id );
+    $slug = sanitize_title( $name );
+
+    global $wpdb;
+    $wpdb->update( $wpdb->posts, array( 'post_title' => $name, 'post_name' => $slug ), $where );
+
+  }
+
 }
 

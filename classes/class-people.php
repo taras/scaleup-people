@@ -3,7 +3,9 @@ class ScaleUp_People {
 
   private $_args;
 
-  function __construct( $args = array() ) {
+  private $_post_type;
+
+  function __construct( $post_type, $args = array() ) {
 
     $defaults = array(
       'label' => 'People',
@@ -22,7 +24,7 @@ class ScaleUp_People {
         'name' => 'People',
         'singular_name' => 'Person',
         'menu_name' => 'People',
-        'add_new' => 'Add New',
+        'add_new' => 'Add new person',
         'add_new_item' => 'Add New Person',
         'edit' => 'Edit',
         'edit_item' => 'Edit Person',
@@ -30,12 +32,13 @@ class ScaleUp_People {
         'view' => 'View',
         'view_item' => 'View Person',
         'search_items' => 'Search People',
-        'not_found' => 'Person not found',
+        'not_found' => 'People not found',
         'not_found_in_trash' => 'Person not in Trash',
         'parent' => 'Parent Person',
       ));
 
-    $this->_args = wp_parse_args( $args, $defaults );
+    $this->_args      = wp_parse_args( $args, $defaults );
+    $this->_post_type = $post_type;
 
     add_action( 'init', array( $this, 'init') );
     add_action( 'register_schemas', array( $this, 'register_schemas') );
@@ -43,7 +46,7 @@ class ScaleUp_People {
   }
 
   function init() {
-    register_post_type( 'person', $this->_args );
+    register_post_type( $this->_post_type, $this->_args );
   }
 
   /**
@@ -66,7 +69,7 @@ class ScaleUp_People {
     foreach ( $properties as $property )
       $fields[ $property ] = $default;
 
-    register_schema( 'Person', 'person', $fields );
+    register_schema( 'Person', $this->_post_type, $fields );
   }
 
 }
