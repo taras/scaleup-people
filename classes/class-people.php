@@ -43,7 +43,7 @@ class ScaleUp_People {
   }
 
   function init() {
-
+    register_post_type( 'person', $this->_args );
   }
 
   /**
