@@ -226,7 +226,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    7 =>
                                    array(
-                                     'key' => 'field_8',
+                                     'key' => "$post_type.brand",
                                      'label' => 'Brand',
                                      'name' => 'brand',
                                      'type' => 'text',
@@ -252,7 +252,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    8 =>
                                    array(
-                                     'key' => 'field_9',
+                                     'key' => "$post_type.children",
                                      'label' => 'Children ',
                                      'name' => 'children',
                                      'type' => 'text',
@@ -278,7 +278,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    9 =>
                                    array(
-                                     'key' => 'field_10',
+                                     'key' => "$post_type.colleague",
                                      'label' => 'Colleague	',
                                      'name' => 'colleague',
                                      'type' => 'text',
@@ -304,7 +304,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    10 =>
                                    array(
-                                     'key' => 'field_11',
+                                     'key' => "$post_type.colleagues",
                                      'label' => 'Colleagues	',
                                      'name' => 'colleagues',
                                      'type' => 'text',
@@ -330,7 +330,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    11 =>
                                    array(
-                                     'key' => 'field_12',
+                                     'key' => "$post_type.contactPoint",
                                      'label' => 'Contact Point ',
                                      'name' => 'contactPoint',
                                      'type' => 'text',
@@ -356,7 +356,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    12 =>
                                    array(
-                                     'key' => 'field_13',
+                                     'key' => "$post_type.contactPoints",
                                      'label' => 'Contact Points	',
                                      'name' => 'contactPoints',
                                      'type' => 'text',
@@ -382,9 +382,9 @@ class ScaleUp_People_Plugin {
                                    ),
                                    13 =>
                                    array(
-                                     'key' => 'field_14',
+                                     'key' => "$post_type.deathDate",
                                      'label' => 'Death Date	',
-                                     'name' => 'deathdate',
+                                     'name' => 'deathDate',
                                      'type' => 'number',
                                      'order_no' => 13,
                                      'instructions' => 'Date of death.
@@ -407,7 +407,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    14 =>
                                    array(
-                                     'key' => 'field_15',
+                                     'key' => "$post_type.duns",
                                      'label' => 'DUNS Number ',
                                      'name' => 'duns',
                                      'type' => 'text',
@@ -433,7 +433,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    15 =>
                                    array(
-                                     'key' => 'field_16',
+                                     'key' => "$post_type.email",
                                      'label' => 'Email ',
                                      'name' => 'email',
                                      'type' => 'text',
@@ -459,7 +459,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    16 =>
                                    array(
-                                     'key' => 'field_17',
+                                     'key' => "$post_type.familyName",
                                      'label' => 'Last Name ',
                                      'name' => 'familyName',
                                      'type' => 'text',
@@ -485,7 +485,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    17 =>
                                    array(
-                                     'key' => 'field_18',
+                                     'key' => "$post_type.faxNumber",
                                      'label' => 'Fax Number',
                                      'name' => 'faxNumber',
                                      'type' => 'text',
@@ -511,7 +511,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    18 =>
                                    array(
-                                     'key' => 'field_19',
+                                     'key' => "$post_type.follows",
                                      'label' => 'Follows',
                                      'name' => 'follows',
                                      'type' => 'text',
@@ -537,7 +537,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    19 =>
                                    array(
-                                     'key' => 'field_20',
+                                     'key' => "$post_type.gender",
                                      'label' => 'Gender',
                                      'name' => 'gender',
                                      'type' => 'text',
@@ -563,7 +563,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    20 =>
                                    array(
-                                     'key' => 'field_21',
+                                     'key' => "$post_type.givenName",
                                      'label' => 'First Name ',
                                      'name' => 'givenName',
                                      'type' => 'text',
@@ -589,7 +589,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    21 =>
                                    array(
-                                     'key' => 'field_22',
+                                     'key' => "$post_type.globalLocationNumber",
                                      'label' => ' Global Location Number',
                                      'name' => 'globalLocationNumber',
                                      'type' => 'text',
@@ -615,7 +615,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    22 =>
                                    array(
-                                     'key' => 'field_23',
+                                     'key' => "$post_type.hasPos",
                                      'label' => 'Points-of-Sales',
                                      'name' => 'hasPos',
                                      'type' => 'text',
@@ -641,7 +641,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    23 =>
                                    array(
-                                     'key' => 'field_24',
+                                     'key' => "$post_type.homeLocation",
                                      'label' => 'Residence Location 	',
                                      'name' => 'homeLocation',
                                      'type' => 'text',
@@ -667,7 +667,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    24 =>
                                    array(
-                                     'key' => 'field_25',
+                                     'key' => "$post_type.honorificPrefix",
                                      'label' => 'Name Prefix ',
                                      'name' => 'honorificPrefix',
                                      'type' => 'text',
@@ -693,7 +693,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    25 =>
                                    array(
-                                     'key' => 'field_26',
+                                     'key' => "$post_type.honorificSuffix",
                                      'label' => 'Name Suffix ',
                                      'name' => 'honorificSuffix',
                                      'type' => 'text',
@@ -719,7 +719,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    26 =>
                                    array(
-                                     'key' => 'field_27',
+                                     'key' => "$post_type.interactionCount",
                                      'label' => 'Interaction Count ',
                                      'name' => 'interactionCount',
                                      'type' => 'text',
@@ -745,7 +745,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    27 =>
                                    array(
-                                     'key' => 'field_28',
+                                     'key' => "$post_type.isicV4",
                                      'label' => 'ISIC Code ',
                                      'name' => 'isicV4',
                                      'type' => 'text',
@@ -771,7 +771,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    28 =>
                                    array(
-                                     'key' => 'field_29',
+                                     'key' => "$post_type.jobTitle",
                                      'label' => 'Job Title ',
                                      'name' => 'jobTitle',
                                      'type' => 'text',
@@ -797,7 +797,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    29 =>
                                    array(
-                                     'key' => 'field_30',
+                                     'key' => "$post_type.knows",
                                      'label' => 'Knows ',
                                      'name' => 'knows',
                                      'type' => 'text',
@@ -823,7 +823,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    30 =>
                                    array(
-                                     'key' => 'field_31',
+                                     'key' => "$post_type.makesOffer",
                                      'label' => 'Offering',
                                      'name' => 'makesOffer',
                                      'type' => 'text',
@@ -849,7 +849,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    31 =>
                                    array(
-                                     'key' => 'field_32',
+                                     'key' => "$post_type.memberOf",
                                      'label' => 'Member Of ',
                                      'name' => 'memberOf',
                                      'type' => 'text',
@@ -875,7 +875,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    32 =>
                                    array(
-                                     'key' => 'field_33',
+                                     'key' => "$post_type.naics",
                                      'label' => 'NAICS code',
                                      'name' => 'naics',
                                      'type' => 'text',
@@ -901,7 +901,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    33 =>
                                    array(
-                                     'key' => 'field_34',
+                                     'key' => "$post_type.nationality",
                                      'label' => 'Nationality',
                                      'name' => 'nationality',
                                      'type' => 'text',
@@ -927,7 +927,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    34 =>
                                    array(
-                                     'key' => 'field_35',
+                                     'key' => "$post_type.owns",
                                      'label' => 'Owns',
                                      'name' => 'owns',
                                      'type' => 'text',
@@ -953,7 +953,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    35 =>
                                    array(
-                                     'key' => 'field_36',
+                                     'key' => "$post_type.parent",
                                      'label' => 'Parent',
                                      'name' => 'parent',
                                      'type' => 'text',
@@ -979,7 +979,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    36 =>
                                    array(
-                                     'key' => 'field_37',
+                                     'key' => "$post_type.parents",
                                      'label' => 'Parents',
                                      'name' => 'parents',
                                      'type' => 'text',
@@ -1005,7 +1005,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    37 =>
                                    array(
-                                     'key' => 'field_38',
+                                     'key' => "$post_type.performerIn",
                                      'label' => 'Performing In ',
                                      'name' => 'performerIn',
                                      'type' => 'text',
@@ -1031,7 +1031,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    38 =>
                                    array(
-                                     'key' => 'field_39',
+                                     'key' => "$post_type.Relatives",
                                      'label' => 'Relatives ',
                                      'name' => 'relatedTo',
                                      'type' => 'text',
@@ -1057,7 +1057,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    39 =>
                                    array(
-                                     'key' => 'field_40',
+                                     'key' => "$post_type.seeks",
                                      'label' => 'Looking For ',
                                      'name' => 'seeks',
                                      'type' => 'text',
@@ -1083,7 +1083,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    40 =>
                                    array(
-                                     'key' => 'field_41',
+                                     'key' => "$post_type.sibling",
                                      'label' => 'Sibling',
                                      'name' => 'sibling',
                                      'type' => 'text',
@@ -1109,7 +1109,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    41 =>
                                    array(
-                                     'key' => 'field_42',
+                                     'key' => "$post_type.siblings",
                                      'label' => 'Siblings	',
                                      'name' => 'siblings',
                                      'type' => 'text',
@@ -1135,7 +1135,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    42 =>
                                    array(
-                                     'key' => 'field_43',
+                                     'key' => "$post_type.spouse",
                                      'label' => 'Spouse',
                                      'name' => 'spouse',
                                      'type' => 'text',
@@ -1161,7 +1161,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    43 =>
                                    array(
-                                     'key' => 'field_44',
+                                     'key' => "$post_type.taxId",
                                      'label' => 'Tax ID',
                                      'name' => 'taxId',
                                      'type' => 'text',
@@ -1187,7 +1187,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    44 =>
                                    array(
-                                     'key' => 'field_45',
+                                     'key' => "$post_type.phoneNumber",
                                      'label' => 'Phone Number ',
                                      'name' => 'telephone',
                                      'type' => 'text',
@@ -1213,7 +1213,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    45 =>
                                    array(
-                                     'key' => 'field_46',
+                                     'key' => "$post_type.vatId",
                                      'label' => 'Vat ID',
                                      'name' => 'vatId',
                                      'type' => 'text',
@@ -1239,7 +1239,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    46 =>
                                    array(
-                                     'key' => 'field_47',
+                                     'key' => "$post_type.workLocation",
                                      'label' => 'Work Location ',
                                      'name' => 'workLocation',
                                      'type' => 'text',
@@ -1265,7 +1265,7 @@ class ScaleUp_People_Plugin {
                                    ),
                                    47 =>
                                    array(
-                                     'key' => 'field_48',
+                                     'key' => "$post_type.worksFor",
                                      'label' => 'Employment ',
                                      'name' => 'worksFor',
                                      'type' => 'text',
