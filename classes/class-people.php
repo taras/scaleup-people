@@ -38,15 +38,35 @@ class ScaleUp_People {
     $this->_args = wp_parse_args( $args, $defaults );
 
     add_action( 'init', array( $this, 'init') );
+    add_action( 'register_schemas', array( $this, 'register_schemas') );
 
   }
 
   function init() {
 
-    // register Person Post Type
-    $post_type = apply_filters( 'scaleup_people_person_post_type', 'person' );
-    register_post_type( $post_type, $this->_args );
+  }
 
+  /**
+   * Register Person post type with schemas
+   */
+  function register_schemas() {
+
+    $default = array(
+      'table'   =>  'postmeta',
+      'default' =>  '',
+      'type'    =>  'text',
+      'create'  =>  'add_post_meta',
+      'read'    =>  'get_post_meta',
+      'update'  =>  'update_post_meta',
+      'delete'  =>  'delete_post_meta'
+    );
+
+    $fields = array();
+    $properties = get_schema_fields( 'Person' );
+    foreach ( $properties as $property )
+      $fields[ $property ] = $default;
+
+    register_schema( 'Person', 'person', $fields );
   }
 
 }
