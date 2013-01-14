@@ -65,7 +65,7 @@ class ScaleUp_People {
     );
 
     $fields = array();
-    $properties = get_schema_fields( 'Person' );
+    $properties = get_schema_fields( 'Person', true );
     foreach ( $properties as $property )
       $fields[ $property ] = $default;
 
