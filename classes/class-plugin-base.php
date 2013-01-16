@@ -14,7 +14,7 @@ class ScaleUp_People_Plugin {
   function __construct() {
 
     self::$_this              = $this;
-    self::$_person_post_type  = apply_filters( 'scaleup_people_plugin_peopl_post_type', 'person' );
+    self::$_person_post_type  = apply_filters( 'scaleup_people_plugin_people_post_type', 'scaleup_person' );
     self::$_people            = new ScaleUp_People( self::$_person_post_type );
 
     add_action( 'init', array( $this, 'admin_init' ) );
@@ -1298,7 +1298,7 @@ class ScaleUp_People_Plugin {
                                      array(
                                        'param' => 'post_type',
                                        'operator' => '==',
-                                       'value' => 'person',
+                                       'value' => $post_type,
                                        'order_no' => 0,
                                      ),
                                    ),
@@ -1345,4 +1345,3 @@ class ScaleUp_People_Plugin {
   }
 
 }
-
